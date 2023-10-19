@@ -7,7 +7,7 @@ data class TranslateState(
     val fromText: String = "",
     val toText: String? = null,
     val isTranslating: Boolean = false,
-    val fromLanguage: UiLanguage = UiLanguage.byCode("kr"),
+    val fromLanguage: UiLanguage = UiLanguage.byCode("ko"),
     val toLanguage: UiLanguage = UiLanguage.byCode("en"),
     val isChoosingFromLanguage: Boolean = false,
     val isChoosingToLanguage: Boolean = false,
