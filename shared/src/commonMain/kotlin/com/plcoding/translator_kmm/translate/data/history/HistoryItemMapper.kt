@@ -9,7 +9,7 @@ fun HistoryEntity.toHistoryItem(): HistoryItem {
         id = id,
         fromLanguageCode = fromLanguageCode,
         fromText = fromText,
-        toLanguage = toLanguage,
+        toLanguageCode = toLanguageCode,
         toText = toText
     )
 }
