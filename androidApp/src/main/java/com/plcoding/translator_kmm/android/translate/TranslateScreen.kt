@@ -2,6 +2,7 @@
 
 package com.plcoding.translator_kmm.android.translate
 
+import android.speech.tts.TextToSpeech
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,8 +20,10 @@ import com.plcoding.translator_kmm.android.R
 import com.plcoding.translator_kmm.android.translate.component.LanguageDropDown
 import com.plcoding.translator_kmm.android.translate.component.SwapLanguagesButton
 import com.plcoding.translator_kmm.android.translate.component.TranslateTextField
+import com.plcoding.translator_kmm.android.translate.component.rememberTextToSpeech
 import com.plcoding.translator_kmm.translate.presentation.TranslateEvent
 import com.plcoding.translator_kmm.translate.presentation.TranslateState
+import java.util.Locale
 
 @Composable
 fun TranslateScreen(
@@ -83,6 +86,8 @@ fun TranslateScreen(
             item {
                 val clipboardManager = LocalClipboardManager.current
                 val keyboardController = LocalSoftwareKeyboardController.current
+                val textToSpeech = rememberTextToSpeech()
+
                 TranslateTextField(
                     modifier = Modifier.fillMaxWidth(),
                     fromText = state.fromText,
@@ -102,7 +107,15 @@ fun TranslateScreen(
                         Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_LONG).show()
                     },
                     onCloseClick = { onEvent(TranslateEvent.CloseTranslation) },
-                    onSpeakerClick = {},
+                    onSpeakerClick = {
+                        textToSpeech.language = state.toLanguage.toLocale() ?: Locale.ENGLISH
+                        textToSpeech.speak(
+                            state.toText,
+                            TextToSpeech.QUEUE_FLUSH,
+                            null,
+                            null
+                        )
+                    },
                     onTextFieldClick = { onEvent(TranslateEvent.EditTranslation) }
                 )
             }
