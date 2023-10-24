@@ -96,7 +96,11 @@ private fun TranslatedTextField(
     Column(
         modifier = modifier
     ) {
-        LanguageDisplay(language = fromLanguage)
+        LanguageDisplay(
+            language = fromLanguage,
+            hasCloseButton = true,
+            onCloseClick = onCloseClick
+        )
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             text = fromText,
@@ -107,15 +111,6 @@ private fun TranslatedTextField(
             modifier = Modifier.align(Alignment.End)
         ) {
             IconButton(
-                onClick = onWriteTextSpeakerClick
-            ) {
-                Icon(
-                    imageVector = ImageVector.vectorResource(id = R.drawable.speaker),
-                    contentDescription = stringResource(id = R.string.play_loud),
-                    tint = LightBlue
-                )
-            }
-            IconButton(
                 onClick = { onCopyClick(fromText) }
             ) {
                 Icon(
@@ -125,11 +120,11 @@ private fun TranslatedTextField(
                 )
             }
             IconButton(
-                onClick = onCloseClick
+                onClick = onWriteTextSpeakerClick
             ) {
                 Icon(
-                    imageVector = Icons.Rounded.Close,
-                    contentDescription = stringResource(id = R.string.close),
+                    imageVector = ImageVector.vectorResource(id = R.drawable.speaker),
+                    contentDescription = stringResource(id = R.string.play_loud),
                     tint = LightBlue
                 )
             }
