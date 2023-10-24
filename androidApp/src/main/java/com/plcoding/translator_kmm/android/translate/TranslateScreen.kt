@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.FabPosition
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
@@ -15,6 +16,10 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -43,6 +48,8 @@ fun TranslateScreen(
     onEvent: (TranslateEvent) -> Unit
 ) {
     val context = LocalContext.current
+    val scrollState = rememberLazyListState()
+    var performScrollToTop by remember { mutableStateOf(false) }
 
     LaunchedEffect(key1 = state.error) {
         val message = when (state.error) {
@@ -55,6 +62,13 @@ fun TranslateScreen(
         message?.let {
             Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             onEvent(TranslateEvent.OnErrorSeen)
+        }
+    }
+
+    LaunchedEffect(key1 = performScrollToTop) {
+        if (performScrollToTop) {
+            scrollState.animateScrollToItem(0)
+            performScrollToTop = false
         }
     }
 
@@ -81,7 +95,8 @@ fun TranslateScreen(
                 .fillMaxSize()
                 .padding(padding)
                 .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            state = scrollState
         ) {
             item {
                 Row(
@@ -187,6 +202,7 @@ fun TranslateScreen(
                     item = item,
                     onClick = {
                         onEvent(TranslateEvent.SelectHistoryItem(item))
+                        performScrollToTop = true
                     }
                 )
             }
