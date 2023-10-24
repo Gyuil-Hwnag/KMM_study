@@ -39,7 +39,8 @@ fun TranslateTextField(
     onTextChange: (String) -> Unit,
     onCopyClick: (String) -> Unit,
     onCloseClick: () -> Unit,
-    onSpeakerClick: () -> Unit,
+    onTranslateTextSpeakerClick: () -> Unit,
+    onWriteTextSpeakerClick: () -> Unit,
     onTextFieldClick: () -> Unit
 ) {
     Box(
@@ -55,24 +56,25 @@ fun TranslateTextField(
         ) { toText ->
             if (toText == null || isTranslating) {
                 IdleTranslateTextField(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(2f),
                     fromText = fromText,
                     isTranslating = isTranslating,
                     onTextChange = onTextChange,
                     onTranslateClick = onTranslateClick,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .aspectRatio(2f)
                 )
             } else {
                 TranslatedTextField(
+                    modifier = Modifier.fillMaxWidth(),
                     fromText = fromText,
                     toText = toText,
                     fromLanguage = fromLanguage,
                     toLanguage = toLanguage,
                     onCopyClick = onCopyClick,
                     onCloseClick = onCloseClick,
-                    onSpeakerClick = onSpeakerClick,
-                    modifier = Modifier.fillMaxWidth()
+                    onTranslateTextSpeakerClick = onTranslateTextSpeakerClick,
+                    onWriteTextSpeakerClick = onWriteTextSpeakerClick
                 )
             }
         }
@@ -88,7 +90,8 @@ private fun TranslatedTextField(
     toLanguage: UiLanguage,
     onCopyClick: (String) -> Unit,
     onCloseClick: () -> Unit,
-    onSpeakerClick: () -> Unit,
+    onTranslateTextSpeakerClick: () -> Unit,
+    onWriteTextSpeakerClick: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -103,6 +106,15 @@ private fun TranslatedTextField(
         Row(
             modifier = Modifier.align(Alignment.End)
         ) {
+            IconButton(
+                onClick = onWriteTextSpeakerClick
+            ) {
+                Icon(
+                    imageVector = ImageVector.vectorResource(id = R.drawable.speaker),
+                    contentDescription = stringResource(id = R.string.play_loud),
+                    tint = LightBlue
+                )
+            }
             IconButton(
                 onClick = { onCopyClick(fromText) }
             ) {
@@ -145,7 +157,7 @@ private fun TranslatedTextField(
                 )
             }
             IconButton(
-                onClick = onSpeakerClick
+                onClick = onTranslateTextSpeakerClick
             ) {
                 Icon(
                     imageVector = ImageVector.vectorResource(id = R.drawable.speaker),

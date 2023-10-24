@@ -107,7 +107,16 @@ fun TranslateScreen(
                         Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_LONG).show()
                     },
                     onCloseClick = { onEvent(TranslateEvent.CloseTranslation) },
-                    onSpeakerClick = {
+                    onWriteTextSpeakerClick = {
+                        textToSpeech.language = state.fromLanguage.toLocale() ?: Locale.ENGLISH
+                        textToSpeech.speak(
+                            state.fromText,
+                            TextToSpeech.QUEUE_FLUSH,
+                            null,
+                            null
+                        )
+                    },
+                    onTranslateTextSpeakerClick = {
                         textToSpeech.language = state.toLanguage.toLocale() ?: Locale.ENGLISH
                         textToSpeech.speak(
                             state.toText,
