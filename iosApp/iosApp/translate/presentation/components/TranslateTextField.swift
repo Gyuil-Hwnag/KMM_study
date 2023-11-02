@@ -109,6 +109,8 @@ private extension TranslateTextField {
         let fromLanguage: UiLanguage
         let toLanguage: UiLanguage
         let onTranslateEvent: (TranslateEvent) -> Void
+        
+        private let textToSpeech = TextToSpeech()
 
         var body: some View {
             VStack(alignment: .leading) {
@@ -134,12 +136,9 @@ private extension TranslateTextField {
                         Image(systemName: "xmark").foregroundColor(.lightBlue)
                     }
                 }
-                Divider()
-                    .padding()
-                LanguageDisplay(language: toLanguage)
-                    .padding(.bottom)
-                Text(toText)
-                    .foregroundColor(.onSurface)
+                Divider().padding()
+                LanguageDisplay(language: toLanguage).padding(.bottom)
+                Text(toText).foregroundColor(.onSurface)
 
                 HStack {
                     Spacer()
@@ -156,7 +155,12 @@ private extension TranslateTextField {
                             .foregroundColor(.lightBlue)
                     }
                     Button(
-                        action: {}
+                        action: {
+                            textToSpeech.speak(
+                                text: toText,
+                                language: toLanguage.language.langCode
+                            )
+                        }
                     ) {
                         Image(systemName: "speaker.wave.2")
                             .foregroundColor(.lightBlue)
