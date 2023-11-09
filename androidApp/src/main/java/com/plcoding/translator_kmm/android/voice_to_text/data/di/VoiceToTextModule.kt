@@ -1,7 +1,7 @@
 package com.plcoding.translator_kmm.android.voice_to_text.data.di
 
 import android.app.Application
-import com.plcoding.translator_kmm.android.voice_to_text.data.AndroidVoiceToTextParser
+import com.plcoding.translator_kmm.android.voice_to_text.data.data.AndroidVoiceToTextParser
 import com.plcoding.translator_kmm.voice_to_text.domain.VoiceToTextParser
 import dagger.Module
 import dagger.Provides

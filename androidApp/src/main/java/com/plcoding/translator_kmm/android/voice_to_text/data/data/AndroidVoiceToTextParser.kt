@@ -1,4 +1,4 @@
-package com.plcoding.translator_kmm.android.voice_to_text.data
+package com.plcoding.translator_kmm.android.voice_to_text.data.data
 
 import android.app.Application
 import android.content.Intent
