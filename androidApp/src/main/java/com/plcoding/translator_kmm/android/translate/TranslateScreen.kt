@@ -4,13 +4,13 @@ package com.plcoding.translator_kmm.android.translate
 
 import android.speech.tts.TextToSpeech
 import android.widget.Toast
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.FabPosition
 import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -24,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -75,20 +76,20 @@ fun TranslateScreen(
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                modifier = Modifier.size(75.dp),
-                onClick = {
-                    onEvent(TranslateEvent.RecordAudio)
-                },
+                modifier = Modifier.size(48.dp),
+                onClick = { onEvent(TranslateEvent.RecordAudio) },
                 backgroundColor = MaterialTheme.colors.primary,
                 contentColor = MaterialTheme.colors.onPrimary
             ) {
-                Icon(
+                Image(
+                    modifier = Modifier.padding(12.dp),
                     imageVector = ImageVector.vectorResource(R.drawable.mic),
-                    contentDescription = stringResource(id = R.string.record_audio)
+                    contentDescription = stringResource(id = R.string.record_audio),
+                    contentScale = ContentScale.FillBounds
                 )
             }
         },
-        floatingActionButtonPosition = FabPosition.Center
+        floatingActionButtonPosition = FabPosition.End
     ) { padding ->
         LazyColumn(
             modifier = Modifier
@@ -108,35 +109,21 @@ fun TranslateScreen(
                     LanguageDropDown(
                         language = state.fromLanguage,
                         isOpen = state.isChoosingFromLanguage,
-                        onClick = {
-                            onEvent(TranslateEvent.OpenFromLanguageDropDown)
-                        },
-                        onDismiss = {
-                            onEvent(TranslateEvent.StopChoosingLanguage)
-                        },
-                        onSelectLanguage = {
-                            onEvent(TranslateEvent.ChooseFromLanguage(it))
-                        }
+                        onClick = { onEvent(TranslateEvent.OpenFromLanguageDropDown) },
+                        onDismiss = { onEvent(TranslateEvent.StopChoosingLanguage) },
+                        onSelectLanguage = { onEvent(TranslateEvent.ChooseFromLanguage(it)) }
                     )
                     Spacer(modifier = Modifier.weight(1f))
                     SwapLanguagesButton(
-                        onClick = {
-                            onEvent(TranslateEvent.SwapLanguages)
-                        }
+                        onClick = { onEvent(TranslateEvent.SwapLanguages) }
                     )
                     Spacer(modifier = Modifier.weight(1f))
                     LanguageDropDown(
                         language = state.toLanguage,
                         isOpen = state.isChoosingToLanguage,
-                        onClick = {
-                            onEvent(TranslateEvent.OpenToLanguageDropDown)
-                        },
-                        onDismiss = {
-                            onEvent(TranslateEvent.StopChoosingLanguage)
-                        },
-                        onSelectLanguage = {
-                            onEvent(TranslateEvent.ChooseToLanguage(it))
-                        }
+                        onClick = { onEvent(TranslateEvent.OpenToLanguageDropDown) },
+                        onDismiss = { onEvent(TranslateEvent.StopChoosingLanguage) },
+                        onSelectLanguage = { onEvent(TranslateEvent.ChooseToLanguage(it)) }
                     )
                 }
             }
@@ -206,6 +193,8 @@ fun TranslateScreen(
                     }
                 )
             }
+
+            item { Spacer(modifier = Modifier.fillMaxWidth().height(12.dp)) }
         }
     }
 }

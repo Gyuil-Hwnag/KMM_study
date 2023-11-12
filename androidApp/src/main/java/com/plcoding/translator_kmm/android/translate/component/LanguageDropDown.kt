@@ -48,7 +48,7 @@ fun LanguageDropDown(
         Row(
             modifier = Modifier
                 .clickable(onClick = onClick)
-                .padding(16.dp),
+                .padding(vertical = 16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             AsyncImage(
