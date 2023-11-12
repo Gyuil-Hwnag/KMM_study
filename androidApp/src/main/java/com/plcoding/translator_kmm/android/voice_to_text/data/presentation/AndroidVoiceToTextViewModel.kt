@@ -1,4 +1,4 @@
-package com.plcoding.translator_kmm.android.voice_to_text.data.presentation.component
+package com.plcoding.translator_kmm.android.voice_to_text.data.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,7 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class AndroidVoiceToTextParser @Inject constructor(
+class AndroidVoiceToTextViewModel @Inject constructor(
     private val parser: VoiceToTextParser
 ): ViewModel() {
 
