@@ -27,6 +27,7 @@
 		CFCA55062AEFDDE300F9C3D2 /* SwapLanguageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA55052AEFDDE300F9C3D2 /* SwapLanguageButton.swift */; };
 		CFCA550A2AEFDF9900F9C3D2 /* TranslateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA55092AEFDF9900F9C3D2 /* TranslateScreen.swift */; };
 		CFCA550C2AEFDFEB00F9C3D2 /* IOSTranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA550B2AEFDFEB00F9C3D2 /* IOSTranslateViewModel.swift */; };
+		CFD9A6B72B0B606A00F3E305 /* IOSVoiceToTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD9A6B62B0B606A00F3E305 /* IOSVoiceToTextViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		CFCA55052AEFDDE300F9C3D2 /* SwapLanguageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapLanguageButton.swift; sourceTree = "<group>"; };
 		CFCA55092AEFDF9900F9C3D2 /* TranslateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateScreen.swift; sourceTree = "<group>"; };
 		CFCA550B2AEFDFEB00F9C3D2 /* IOSTranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSTranslateViewModel.swift; sourceTree = "<group>"; };
+		CFD9A6B62B0B606A00F3E305 /* IOSVoiceToTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSVoiceToTextViewModel.swift; sourceTree = "<group>"; };
 		DEA3AF241DEB4CD3EEEA0E01 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +140,7 @@
 		CF261DDD2B0260FB00C32454 /* voice_to_text */ = {
 			isa = PBXGroup;
 			children = (
+				CFD9A6B52B0B605000F3E305 /* presentation */,
 				CF261DDE2B02610E00C32454 /* data */,
 			);
 			path = voice_to_text;
@@ -184,6 +187,14 @@
 				CF2D81F02AF9237C000679BA /* TranslateHistoryItem.swift */,
 			);
 			path = components;
+			sourceTree = "<group>";
+		};
+		CFD9A6B52B0B605000F3E305 /* presentation */ = {
+			isa = PBXGroup;
+			children = (
+				CFD9A6B62B0B606A00F3E305 /* IOSVoiceToTextViewModel.swift */,
+			);
+			path = presentation;
 			sourceTree = "<group>";
 		};
 		EADCF86AEF5B53B9B62B3CC4 /* Frameworks */ = {
@@ -327,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF9D1B5F2AF37B4900423B90 /* ProgressButton.swift in Sources */,
+				CFD9A6B72B0B606A00F3E305 /* IOSVoiceToTextViewModel.swift in Sources */,
 				CF261DE02B02613200C32454 /* MicrophonePowerObserver.swift in Sources */,
 				CFCA550C2AEFDFEB00F9C3D2 /* IOSTranslateViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
