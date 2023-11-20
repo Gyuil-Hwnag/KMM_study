@@ -13,6 +13,7 @@ struct TranslateScreen: View {
     private var historyDataSource: HistoryDataSource
     private var translateUseCase: Translate
     @ObservedObject var viewModel: IOSTranslateViewModel
+    private let parser = IOSVoiceToTextParser()
 
     init(historyDataSource: HistoryDataSource, translateUseCase: Translate) {
         self.historyDataSource = historyDataSource
@@ -84,7 +85,13 @@ struct TranslateScreen: View {
             
             VStack {
                 Spacer()
-                NavigationLink(destination: Text("Voice-to-text Screen")) {
+                NavigationLink(
+                    destination: VoiceToTextScreen(
+                        onResult: { spokenText in viewModel.onEvent(event: TranslateEvent.SubmitVoiceResult(result: spokenText)) },
+                        parser: parser,
+                        languageCode: viewModel.state.fromLanguage.language.langCode
+                    )
+                ) {
                     ZStack {
                         Circle().foregroundColor(.primaryColor).padding()
                         Image(uiImage: UIImage(named: "mic")!).foregroundColor(.onPrimary)
@@ -92,7 +99,6 @@ struct TranslateScreen: View {
                     .frame(maxWidth: 100, maxHeight: 100)
                 }
             }
-            
         }
         .onAppear {
             viewModel.startObserving()

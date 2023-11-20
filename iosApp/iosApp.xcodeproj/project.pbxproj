@@ -28,6 +28,9 @@
 		CFCA550A2AEFDF9900F9C3D2 /* TranslateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA55092AEFDF9900F9C3D2 /* TranslateScreen.swift */; };
 		CFCA550C2AEFDFEB00F9C3D2 /* IOSTranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA550B2AEFDFEB00F9C3D2 /* IOSTranslateViewModel.swift */; };
 		CFD9A6B72B0B606A00F3E305 /* IOSVoiceToTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD9A6B62B0B606A00F3E305 /* IOSVoiceToTextViewModel.swift */; };
+		CFD9A6BA2B0B629300F3E305 /* VoiceRecorderDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD9A6B92B0B629300F3E305 /* VoiceRecorderDisplay.swift */; };
+		CFD9A6BC2B0B64DC00F3E305 /* VoicRecorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD9A6BB2B0B64DC00F3E305 /* VoicRecorderButton.swift */; };
+		CFD9A6BE2B0B666200F3E305 /* VoiceToTextScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD9A6BD2B0B666200F3E305 /* VoiceToTextScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,9 @@
 		CFCA55092AEFDF9900F9C3D2 /* TranslateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateScreen.swift; sourceTree = "<group>"; };
 		CFCA550B2AEFDFEB00F9C3D2 /* IOSTranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSTranslateViewModel.swift; sourceTree = "<group>"; };
 		CFD9A6B62B0B606A00F3E305 /* IOSVoiceToTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSVoiceToTextViewModel.swift; sourceTree = "<group>"; };
+		CFD9A6B92B0B629300F3E305 /* VoiceRecorderDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecorderDisplay.swift; sourceTree = "<group>"; };
+		CFD9A6BB2B0B64DC00F3E305 /* VoicRecorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicRecorderButton.swift; sourceTree = "<group>"; };
+		CFD9A6BD2B0B666200F3E305 /* VoiceToTextScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceToTextScreen.swift; sourceTree = "<group>"; };
 		DEA3AF241DEB4CD3EEEA0E01 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,9 +198,20 @@
 		CFD9A6B52B0B605000F3E305 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				CFD9A6B82B0B626900F3E305 /* component */,
 				CFD9A6B62B0B606A00F3E305 /* IOSVoiceToTextViewModel.swift */,
+				CFD9A6BD2B0B666200F3E305 /* VoiceToTextScreen.swift */,
 			);
 			path = presentation;
+			sourceTree = "<group>";
+		};
+		CFD9A6B82B0B626900F3E305 /* component */ = {
+			isa = PBXGroup;
+			children = (
+				CFD9A6B92B0B629300F3E305 /* VoiceRecorderDisplay.swift */,
+				CFD9A6BB2B0B64DC00F3E305 /* VoicRecorderButton.swift */,
+			);
+			path = component;
 			sourceTree = "<group>";
 		};
 		EADCF86AEF5B53B9B62B3CC4 /* Frameworks */ = {
@@ -339,10 +356,12 @@
 			files = (
 				CF9D1B5F2AF37B4900423B90 /* ProgressButton.swift in Sources */,
 				CFD9A6B72B0B606A00F3E305 /* IOSVoiceToTextViewModel.swift in Sources */,
+				CFD9A6BE2B0B666200F3E305 /* VoiceToTextScreen.swift in Sources */,
 				CF261DE02B02613200C32454 /* MicrophonePowerObserver.swift in Sources */,
 				CFCA550C2AEFDFEB00F9C3D2 /* IOSTranslateViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				CFCA55002AEFDA3A00F9C3D2 /* LanguageDropDownItem.swift in Sources */,
+				CFD9A6BA2B0B629300F3E305 /* VoiceRecorderDisplay.swift in Sources */,
 				CF261DE22B02640E00C32454 /* IOSVoiceToTextParser.swift in Sources */,
 				CF9D1B5D2AF37AF400423B90 /* LanguageDisplay.swift in Sources */,
 				CFCA55042AEFDCCA00F9C3D2 /* SmallLanguageIcon.swift in Sources */,
@@ -350,6 +369,7 @@
 				CFCA55062AEFDDE300F9C3D2 /* SwapLanguageButton.swift in Sources */,
 				CF24F8122AEEAA6D0000AFC9 /* Colors.swift in Sources */,
 				CFCA550A2AEFDF9900F9C3D2 /* TranslateScreen.swift in Sources */,
+				CFD9A6BC2B0B64DC00F3E305 /* VoicRecorderButton.swift in Sources */,
 				CF9D1B5B2AF3799100423B90 /* GraientSurface.swift in Sources */,
 				CF9D1B632AF38EE200423B90 /* TextToSpeech.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
