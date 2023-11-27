@@ -17,7 +17,7 @@ struct iOSApp: App {
 	var body: some Scene {
 		WindowGroup {
             NavigationView {
-                ContentView()
+                ContentView(appModule: appModule)
             }
 		}
 	}
